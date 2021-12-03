@@ -79,7 +79,6 @@ function smellify(textNode) {
     if (!changed) { return; }
 
     textNode.textContent = text;
-    console.log('smellified', textNode);
 }
 
 function smellifyContents(element) {
