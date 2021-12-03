@@ -3,7 +3,7 @@
   "description": "Torna os fatos mais interessantes e cheirosos.",
   "manifest_version": 2,
   "name": "Cheiradores de Flatos",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "icons": {
     "48": "icons/flato48.png",
     "64": "icons/flato64.png",
@@ -15,6 +15,10 @@
       "matches": ["http://*/*", "https://*/*"],
       "js": ["smellify.js"]
     }
+  ],
+
+  "permissions": [
+    "activeTab"
   ]
 
 }
