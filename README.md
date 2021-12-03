@@ -1,16 +1,12 @@
-# borderify
+# Cheiradores de Flatos
 
-**This add-on injects JavaScript into web pages. The `addons.mozilla.org` domain disallows this operation, so this add-on will not work properly when it's run on pages in the `addons.mozilla.org` domain.**
+Esta extensão deixa as cheiragens mais divertidas.
 
-## What it does
+## O que esta extensão faz
 
-This extension just includes:
+Esta extensão afeta qualquer página da Internet. Os efeitos dela são:
 
-* a content script, "borderify.js", that is injected into any pages
-under "mozilla.org/" or any of its subdomains
+- Alterar a palavra "fato" por "flato"
+- Alterar qualquer conjugação do verbo "checar" pela conjugação equivalente do verbo "cheirar"
 
-The content script draws a border around the document.body.
-
-## What it shows
-
-* how to inject content scripts declaratively using manifest.json
+Como isto foi feito só para gerar um efeito cômico, não pretendo corrigir qualquer efeito colateral/indesejado.
