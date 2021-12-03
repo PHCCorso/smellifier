@@ -1,0 +1,20 @@
+{
+  "homepage_url": "https://github.com/PHCCorso/smellifier",
+  "description": "Torna os fatos mais interessantes e cheirosos.",
+  "manifest_version": 2,
+  "name": "Cheiradores de Flatos",
+  "version": "0.1",
+  "icons": {
+    "48": "icons/flato48.png",
+    "64": "icons/flato64.png",
+    "128": "icons/flato128.png"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["smellify.js"]
+    }
+  ]
+
+}
