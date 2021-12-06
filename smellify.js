@@ -1,54 +1,64 @@
-// iterate over all elements of document.body and check if they have text
+let settings = {smellify: true};
+
+browser.storage.sync.get("smellify").then((result) => {
+    if(settings && settings.smellify !== undefined) {
+        settings = result;
+    }
+
+    if (settings.smellify) {
+        document.querySelectorAll('*').forEach(smellifyContents);
+    }
+});
 
 const replaceMap = {
-    "checo": "cheiro",
-    "checas": "cheiras",
-    "checa": "cheira",
-    "checamos": "cheiramos",
-    "checais": "cheirais",
-    "checam": "cheiram",
-    "checava": "cheirava",
-    "checavas": "cheiravas",
-    "checávamos": "cheirávamos",
-    "checáveis": "cheiráveis",
-    "checavam": "cheiravam",
-    "chequei": "cheirei",
-    "checaste": "cheiraste",
-    "checou": "cheirou",
-    "checastes": "cheirastes",
-    "checaram": "cheiraram",
-    "checara": "cheirara",
-    "checaras": "cheiraras",
-    "checáramos": "cheiráramos",
-    "checáreis": "cheiráreis",
-    "checarei": "cheirarei",
-    "checarás": "cheirarás",
-    "checará": "cheirará",
-    "checaremos": "cheiraremos",
-    "checareis": "cheirareis",
-    "checarão": "cheirarão",
-    "checaria": "cheiraria",
-    "checarias": "cheirarias",
     "checaríamos": "cheiraríamos",
-    "checaríeis": "cheiraríeis",
-    "checariam": "cheirariam",
-    "cheque": "cheire",
-    "cheques": "cheires",
-    "chequemos": "cheiremos",
-    "chequeis": "cheireis",
-    "chequem": "cheirem",
-    "checasse": "cheirasse",
-    "checasses": "cheirasses",
     "checássemos": "cheirássemos",
+    "checávamos": "cheirávamos",
+    "checáramos": "cheiráramos",
+    "checaremos": "cheiraremos",
+    "checaríeis": "cheiraríeis",
     "checásseis": "cheirásseis",
+    "checáveis": "cheiráveis",
+    "checastes": "cheirastes",
+    "checáreis": "cheiráreis",
+    "checareis": "cheirareis",
+    "checarias": "cheirarias",
+    "checariam": "cheirariam",
+    "chequemos": "cheiremos",
+    "checasses": "cheirasses",
     "checassem": "cheirassem",
-    "checar": "cheirar",
-    "checares": "cheirares",
     "checarmos": "cheirarmos",
     "checardes": "cheirardes",
+    "checamos": "cheiramos",
+    "checavas": "cheiravas",
+    "checavam": "cheiravam",
+    "checaste": "cheiraste",
+    "checaram": "cheiraram",
+    "checaras": "cheiraras",
+    "checarei": "cheirarei",
+    "checarás": "cheirarás",
+    "checarão": "cheirarão",
+    "checaria": "cheiraria",
+    "chequeis": "cheireis",
+    "checasse": "cheirasse",
+    "checares": "cheirares",
     "checarem": "cheirarem",
+    "checais": "cheirais",
+    "checava": "cheirava",
+    "chequei": "cheirei",
+    "checara": "cheirara",
+    "checará": "cheirará",
+    "cheques": "cheires",
+    "chequem": "cheirem",
+    "checas": "cheiras",
+    "checam": "cheiram",
+    "checou": "cheirou",
+    "cheque": "cheire",
+    "checar": "cheirar",
     "checai": "cheirai",
-    "fato": "flato",
+    "checo": "cheiro",
+    "checa": "cheira",
+    "fato": "flato"
   }
 
 function isUpperCase(char) {
@@ -94,7 +104,11 @@ function smellifyContents(element) {
     element.smellified = true;
 }
 
-const observer = new MutationObserver(function(mutations) {
+const observer = new MutationObserver(async function(mutations) {
+    settings = await browser.storage.sync.get("smellify");
+    console.log(settings);
+    if (!settings.smellify) { return; }
+
     mutations.forEach(function(mutation) {
         if (mutation.type === "childList") {
             mutation.addedNodes.forEach(node => {
@@ -108,6 +122,3 @@ observer.observe(document.body, {
     childList: true,
     subtree: true
 });
-
-document.querySelectorAll('*').forEach(smellifyContents);
-

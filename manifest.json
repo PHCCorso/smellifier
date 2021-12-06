@@ -18,7 +18,23 @@
   ],
 
   "permissions": [
-    "activeTab"
-  ]
+    "storage"
+  ],
+
+  "options_ui": {
+    "page": "options/options.html"
+  },
+
+  "browser_action": {
+    "default_icon": "icons/flato32.png",
+    "default_title": "Cheiradores de Flatos",
+    "default_popup": "options/options.html"
+  },
+  
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "@smellifier"
+    }
+  }
 
 }
