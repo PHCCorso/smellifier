@@ -58,7 +58,15 @@ const replaceMap = {
     "checai": "cheirai",
     "checo": "cheiro",
     "checa": "cheira",
-    "fato": "flato"
+    "verific": "cheir",
+    "apur": "cheir",
+    "averigu": "cheir",
+    "investig": "cheir",
+    "fato": "flato",
+    "fraudulent": "flatulent",
+    "fraude": "flatulência",
+    "fake new": "flatulência",
+    "desinformação": "flatulência"
   }
 
 function isUpperCase(char) {
@@ -106,7 +114,7 @@ function smellifyContents(element) {
 
 const observer = new MutationObserver(async function(mutations) {
     settings = await browser.storage.sync.get("smellify");
-    console.log(settings);
+
     if (!settings.smellify) { return; }
 
     mutations.forEach(function(mutation) {

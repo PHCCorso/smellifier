@@ -1,13 +1,7 @@
-let settings = {smellify: true};
-
 chrome.storage.sync.get(["smellify"], result => {
-    if(settings && settings.smellify !== undefined) {
-        settings = result;
-    }
+    if (result && result.smellify === false) { return; }
 
-    if (settings.smellify) {
-        document.querySelectorAll('*').forEach(smellifyContents);
-    }
+    document.querySelectorAll('*').forEach(smellifyContents);
 });
 
 const replaceMap = {
@@ -58,7 +52,15 @@ const replaceMap = {
     "checai": "cheirai",
     "checo": "cheiro",
     "checa": "cheira",
-    "fato": "flato"
+    "verific": "cheir",
+    "apur": "cheir",
+    "averigu": "cheir",
+    "investig": "cheir",
+    "fato": "flato",
+    "fraudulent": "flatulent",
+    "fraude": "flatulência",
+    "fake new": "flatulência",
+    "desinformação": "flatulência"
   }
 
 function isUpperCase(char) {
@@ -105,8 +107,8 @@ function smellifyContents(element) {
 }
 
 const observer = new MutationObserver(function(mutations) {
-    chrome.storage.sync.get(["smellify"], results => {
-        if (!results.smellify) { return; }
+    chrome.storage.sync.get(["smellify"], result => {
+        if (result && result.smellify === false) { return; }
 
         mutations.forEach(function(mutation) {
             if (mutation.type === "childList") {
